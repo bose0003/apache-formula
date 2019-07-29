@@ -11,7 +11,7 @@ apache:
     - gid: {{ apache.group }}
     - system: True
   {# By default run apache service states (unless pillar is false) #}
-  {% if salt['pillar.get']('apache:manage_service_states', True) %}
+  {% if salt['pillar.get']('apache:lookup:manage_service_states', True) %}
   service.{{apache.service_state}}:
     - name: {{ apache.service }}
     {% if apache.service_state in [ 'running', 'dead' ] %}
